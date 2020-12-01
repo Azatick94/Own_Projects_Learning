@@ -1,0 +1,22 @@
+##Block-level Elements
+A block-level element always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can).
+
+##Block level elements in HTML:
+Example: address, article
+
+##Inline Elements
+An inline element does not start on a new line and only takes up as much width as necessary.
+Example: a, label, button etc.
+
+##The <div> Element
+The <div> element is often used as a container for other HTML elements.
+
+
+##Using The id Attribute
+The id attribute specifies a unique id for an HTML element (the value must be unique within the HTML document).
+
+##Difference Between Class and ID
+An HTML element can only have one unique id that belongs to that single element, while a class name can be used by multiple elements
+
+
+URL - Uniform Resource Locator

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<head> - is container for meta data. Metadata is not displayed-->
+<head>
+    <meta charset="UTF-8">
+    <script>javascript</script>
+    <title>My First Program</title>
+<!--    here in the head I can refer to styles.css with styles for my webpage-->
+<!--    <link rel="stylesheet" href="styles.css">-->
+</head>
+
+<body style="background-color:powderblue">
+<h1 style="font-size:30px;text-align:center;font-size:200%">Hi. I am Azat Burkhanov. Welcome to my Blog</h1>
+<!--adding bold text-->
+<p><b>Contact information:</b></p>
+<p>email: azburhanov@mail.ru</p>
+<p>phone number: 8(985)3440461</p>
+<a href="https://github.com/Azatick94">This is link</a>
+<!--The CSS font-family property defines the font to be used for an HTML element:-->
+<!--also added here id, so i can create url to return into this line in webpage-->
+<p id="ref1" style="color:blue;font-family:verdana;font-size:200%;text-align:left" title="link is 'here' ">PLEASE - "REVIEW MY RESUME" </p>
+<!--my second heading-->
+<h3>Hello My friend!!! This is My Blog</h3>
+<p style="color:red" title="Azat Burkhanov">My First Paragraph</p>
+<!--below added break <br> to next line-->
+<h6>Here is my <br>GitHub Repository</h6>
+<!--<hr> element is used to separate content -->
+<hr>
+
+<img src="website.jpg", width="300", height="300", alt="Pandas">
+<!--here are add buttom-->
+<button>Buttom</button>
+<!--it is possible to write first only starting p-->
+<p>Hello
+
+<!--example of unordered and ordered lists-->
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+<ol>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+
+<!--The HTML <pre> element defines preformatted text.-->
+<pre>
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+</pre>
+<p>Browsers usually insert quotation marks around the q element.</p>
+
+<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>
+
+<!--adding abbreviations-->
+<p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+
+<p>Marking up abbreviations can give useful information to browsers, translation systems and search-engines.</p>
+
+<!--adding borders-->
+<h1 style="border:2px solid Tomato;">Hello World</h1>
+<h1 style="border:2px solid DodgerBlue;">Hello World</h1>
+<h1 style="border:2px solid Violet;">Hello World</h1>
+
+<h1 style="color:Tomato;">Hello World</h1>
+
+<h1 style="background-color:rgba(255, 99, 71, 0);">rgba(255, 99, 71, 0)</h1>
+<h1 style="background-color:rgba(255, 99, 71, 1);">rgba(255, 99, 71, 1)</h1>
+
+here is the image which is used as link to my profile
+<a hre  f="https://github.com/Azatick94" title="Link to my github repository">
+  <img src="website.jpg" alt="HTML tutorial" style="width:100px;height:100px;border:0;">
+</a>
+<a href="#ref1">Jump to Please Review My Resume</a>
+
+<!--added javascript to click on picture-->
+<p>Click on the cup of coffee to execute a JavaScript function:</p>
+<img src="workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
+
+<map name="workmap">
+  <area shape="circle" coords="337,300,44" onclick="myFunction()">
+</map>
+
+<button onclick="print_CV()">Print RESUME</button>
+
+<script>
+function myFunction() {
+  alert("You clicked the coffee cup!");
+}
+</script>
+<script>
+    function print_CV() {
+    window.print();
+    }
+</script>
+
+<!--basic example table-->
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>80</td>
+  </tr>
+</table>
+
+
+</body>
+</html>
