@@ -7,14 +7,14 @@
 
 
 -- фильтрация строк которые были с промокодами.
---
+
 --   SELECT * FROM (
 --                     SELECT orders.id as orders, promocode_id, name as promocode_name, discount as promocode_discount
 --                     FROM orders LEFT JOIN promocodes p on p.id = orders.promocode_id
 --                 )
 --                     AS result
 --   WHERE (promocode_id is NOT NULL AND promocode_discount is NOT NULL AND
---          promocode_discount>0 AND promocode_discount<100)
+--          promocode_discount>0)
 -- ;
 
 
@@ -30,7 +30,7 @@ SELECT
                                         )
                                             AS result
                           WHERE (promocode_id is NOT NULL AND promocode_discount is NOT NULL AND
-                                 promocode_discount>0 AND promocode_discount<100)
+                                 promocode_discount>0)
                          ) AS result_count)
     /
 (SELECT CAST(COUNT(*) AS FLOAT) FROM orders) AS result_ratio;
