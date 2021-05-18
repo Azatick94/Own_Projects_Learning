@@ -12,18 +12,5 @@ class OpenExchangeRestApiServiceTest {
     @Autowired
     OpenExchangeRestApiService service;
 
-//    @Test
-//    void performRequestToday() throws Exception {
-//        String url = service.prepareTodayUrl();
-//        Double aDouble = service.getCurrency(url, "RUB");
-//    }
-//
-//    @Test
-//    void performRequestYesterday() throws Exception {
-//        String url = service.prepareYesterdayUrl();
-//        Double aDouble = service.getCurrency(url, "RUB");
-//    }
-
-
 
 }

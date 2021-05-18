@@ -8,7 +8,7 @@ public class GeneralConfigs {
 
     // Openexchangerates Configs
     public final static String EXCHANGE_APP_ID = "824abb5db4d74d658e95b2c050409517";
-    public final static String DEFAULT_CURRENCY = "RUB";
+    public final static String DEFAULT_COIN = "RUB";
 
     // Giphy Configs
     public final static String GIPHY_API_KEY = "FwKIEcd4E2y0IHyHakJegAjK5kEWZkRA";

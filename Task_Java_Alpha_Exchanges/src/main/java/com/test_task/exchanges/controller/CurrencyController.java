@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
-import static com.test_task.exchanges.config.GeneralConfigs.DEFAULT_CURRENCY;
+import static com.test_task.exchanges.config.GeneralConfigs.DEFAULT_COIN;
 
 @Controller
 @RequestMapping("/rest/exchanges")
 public class CurrencyController {
 
     @GetMapping
-    public RedirectView getCurrencyComparison(@RequestParam(defaultValue = DEFAULT_CURRENCY) String currency) throws Exception {
+    public RedirectView getCurrencyComparison(@RequestParam(defaultValue = DEFAULT_COIN) String currency) throws Exception {
 
         String currencyUpper = currency.toUpperCase();
         RedirectView redirectView;
