@@ -1,8 +1,9 @@
 package com.test_task.exchanges.controller;
 
+import com.test_task.exchanges.client.GiphyClient;
 import com.test_task.exchanges.client.OpenExchangeClient;
-import com.test_task.exchanges.dto.Currency;
-import com.test_task.exchanges.service.GiphyRestApiService;
+import com.test_task.exchanges.dto.giphy.Gif;
+import com.test_task.exchanges.dto.open_exchange.Currency;
 import com.test_task.exchanges.util.AppUtil;
 import feign.Feign;
 import feign.Target;
@@ -19,28 +20,27 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import static com.test_task.exchanges.config.GeneralConfigs.*;
-import static com.test_task.exchanges.util.AppUtil.getCurrencyFromOpenExchangeRates;
+import static com.test_task.exchanges.util.AppUtil.*;
 
 @Controller
 @Import(FeignClientsConfiguration.class)
 public class CurrencyFeignController {
 
     OpenExchangeClient openExchangeClient;
+    GiphyClient giphyClient;
 
     @Autowired
     public CurrencyFeignController(Decoder decoder, Encoder encoder) {
         openExchangeClient = Feign.builder().encoder(encoder).decoder(decoder)
                 .target(Target.EmptyTarget.create(OpenExchangeClient.class));
-    }
-
-    public CurrencyFeignController(OpenExchangeClient openExchangeClient) {
-        this.openExchangeClient = openExchangeClient;
+        giphyClient = Feign.builder().encoder(encoder).decoder(decoder)
+                .target(Target.EmptyTarget.create(GiphyClient.class));
     }
 
     @GetMapping(value = "rest/feign/exchanges")
     public RedirectView getCurrencyComparison(@RequestParam(defaultValue = DEFAULT_COIN) String coin) throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
 
-        RedirectView redirectView;
+        Gif giphy;
 
         // getting today currency
         Currency currencyObjectToday = openExchangeClient.getTodayResult(
@@ -54,11 +54,11 @@ public class CurrencyFeignController {
 
         if (currencyToday > currencyYesterday) {
             // return from https://giphy.com/search/rich
-            redirectView = new RedirectView(GiphyRestApiService.prepareGiphyUrlRich());
+            giphy = giphyClient.getRichLink(new URI(prepareGiphyUrlRich()));
         } else {
             // return from https://giphy.com/search/broke
-            redirectView = new RedirectView(GiphyRestApiService.prepareGiphyUrlBroke());
+            giphy = giphyClient.getBrokeLink(new URI(prepareGiphyUrlBroke()));
         }
-        return redirectView;
+        return new RedirectView(giphy.getData().get(0).getBitlyGifUrl());
     }
 }

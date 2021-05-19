@@ -6,7 +6,7 @@ public class GeneralConfigs {
     public final static String EXCHANGE_BASE_URL = "https://openexchangerates.org/api/";
     public final static String GIPHY_BASE_URL = "https://api.giphy.com/v1/gifs/search";
 
-    // Openexchangerates Configs
+    // OpenExchangeRates Configs
     public final static String EXCHANGE_APP_ID = "824abb5db4d74d658e95b2c050409517";
     public final static String DEFAULT_COIN = "RUB";
 
