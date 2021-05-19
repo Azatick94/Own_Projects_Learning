@@ -4,6 +4,7 @@ package com.test_task.exchanges.client;
 import com.test_task.exchanges.dto.giphy.Gif;
 import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.context.annotation.Configuration;
 
 import java.net.URI;
 

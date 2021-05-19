@@ -4,6 +4,13 @@ import com.test_task.exchanges.client.GiphyClient;
 import com.test_task.exchanges.client.OpenExchangeClient;
 import com.test_task.exchanges.dto.giphy.Gif;
 import com.test_task.exchanges.dto.open_exchange.Currency;
+import feign.Feign;
+import feign.Target;
+import feign.codec.Decoder;
+import feign.codec.Encoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.FeignClientsConfiguration;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -13,14 +20,19 @@ import static com.test_task.exchanges.util.AppUtil.*;
 import static com.test_task.exchanges.util.AppUtil.prepareGiphyUrlBroke;
 
 @Service
+@Import(FeignClientsConfiguration.class)
 public class CurrencyFeignService {
 
-    private final OpenExchangeClient openExchangeClient;
-    private final GiphyClient giphyClient;
+    OpenExchangeClient openExchangeClient;
+    GiphyClient giphyClient;
 
-    public CurrencyFeignService(OpenExchangeClient openExchangeClient, GiphyClient giphyClient) {
-        this.openExchangeClient = openExchangeClient;
-        this.giphyClient = giphyClient;
+    //https://stackoverflow.com/questions/43733569/how-can-i-change-the-feign-url-during-the-runtime
+    @Autowired
+    public CurrencyFeignService(Decoder decoder, Encoder encoder) {
+        openExchangeClient = Feign.builder().encoder(encoder).decoder(decoder)
+                .target(Target.EmptyTarget.create(OpenExchangeClient.class));
+        giphyClient = Feign.builder().encoder(encoder).decoder(decoder)
+                .target(Target.EmptyTarget.create(GiphyClient.class));
     }
 
     public Gif getGiphy(String coin) throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
