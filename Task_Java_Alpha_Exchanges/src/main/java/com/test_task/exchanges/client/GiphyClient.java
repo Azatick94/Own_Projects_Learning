@@ -1,20 +1,17 @@
 package com.test_task.exchanges.client;
 
-
 import com.test_task.exchanges.dto.giphy.Gif;
-import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.net.URI;
-
-//https://stackoverflow.com/questions/43733569/how-can-i-change-the-feign-url-during-the-runtime
-@FeignClient(name = "GIPHY-CLIENT")
+@FeignClient(name = "GIPHY-CLIENT", url = "${giphy.base_url}")
 public interface GiphyClient {
 
-    @RequestLine("GET")
-    Gif getRichLink(URI RichUri);
+    @RequestMapping(method = RequestMethod.GET, value = "?{api_key}&limit=1&q=rich")
+    Gif getRichLink(@RequestParam("api_key") String apiKey);
 
-    @RequestLine("GET")
-    Gif getBrokeLink(URI BrokeUri);
+    @RequestMapping(method = RequestMethod.GET, value = "?{api_key}&limit=1&q=broke")
+    Gif getBrokeLink(@RequestParam("api_key") String apiKey);
 }

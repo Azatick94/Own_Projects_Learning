@@ -1,19 +1,17 @@
 package com.test_task.exchanges.client;
 
 import com.test_task.exchanges.dto.open_exchange.Currency;
-import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.net.URI;
-
-//https://stackoverflow.com/questions/43733569/how-can-i-change-the-feign-url-during-the-runtime
-@FeignClient(name = "OPEN-EXCHANGE-CLIENT")
+@FeignClient(name = "OPEN-EXCHANGE-CLIENT", url = "${openexchange.base_url}")
 public interface OpenExchangeClient {
 
-    @RequestLine("GET")
-    Currency getTodayResult(URI TodayUri);
+    @RequestMapping(method = RequestMethod.GET, value = "/latest.json?app_id={app_id}")
+    Currency getTodayResult(@RequestParam("app_id") String appId);
 
-    @RequestLine("GET")
-    Currency getYesterdayResult(URI YesterdayUri);
+    @RequestMapping(method = RequestMethod.GET, value = "/historical/{date}.json?app_id={app_id}")
+    Currency getYesterdayResult(@RequestParam("date") String date, @RequestParam("app_id") String appId);
 }
