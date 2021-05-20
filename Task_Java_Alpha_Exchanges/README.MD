@@ -1,6 +1,6 @@
 ### * Конфигурационный класс: <br>
 
-- [Link to Application Properties](src\main\resources\application.properties)
+- [Link to Application Properties](src\main\resources\application.properties) <br>
 Необходимо указать значения **openexchange.app_id** и **giphy.api_key**
 
 
